@@ -27,7 +27,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: '7b91efe8-df57-4447-b6f6-64218c5a0b43', passwordVariable: 'password', usernameVariable: 'user')]) {
                    bat  """docker pull sand82/students:12
-                           docker run -d -f sand82/students:12"""
+                           docker run -d -p 8081:8081 sand82/students:12"""
                 }
             }           
         }                              
