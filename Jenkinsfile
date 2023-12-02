@@ -1,25 +1,21 @@
 pipeline {
-    agent none
+    agent any
     stages {
-        stage("Checkot github repo"){
-            steps {      
-                checkout scm          
-                // script {
-                //     checkout([$class: 'GitSCM',
-                //               branches: [[name: 'master']],
-                //               userRemoteConfigs: [[url: 'https://github.com/Sand82/Student-Registry-JenkinsFile.git']]]                              )
-                // }
+        stage("Checkout GitHub Repo") {
+            steps {
+                checkout scm
             }
         }
         stage('Npm install') {            
-            steps{
+            steps {
                 bat "npm install"
             }
         } 
         stage('Run tests') {            
-            steps{
+            steps {
                 bat "npm run test"
             }
         }                
     }
+    // Post-build actions, notifications, etc.
 }
